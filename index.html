@@ -159,7 +159,7 @@
 
 /* loading bar */
 .sp-bar-wrap{
-  position:absolute;bottom:48px;left:32px;right:32px;
+  position:absolute;bottom:136px;left:32px;right:32px;
   height:4px;border-radius:2px;
   background:rgba(255,255,255,.1);overflow:hidden;
   opacity:0;animation:spBarWrapIn .3s ease .7s forwards;
@@ -180,6 +180,19 @@
   letter-spacing:.06em;
   opacity:0;animation:spTagIn .4s ease 1s forwards;
 }
+
+/* CTA button */
+.sp-cta{
+  position:absolute;bottom:72px;left:50%;transform:translateX(-50%);
+  padding:16px 40px;border-radius:50px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#f97316,#fbbf24);
+  color:#0a0a12;font-size:18px;font-weight:900;letter-spacing:.04em;
+  box-shadow:0 0 32px rgba(249,115,22,.55),0 8px 24px rgba(0,0,0,.4);
+  opacity:0;animation:spCtaIn .5s ease 2.6s forwards;
+  white-space:nowrap;transition:transform .15s,box-shadow .15s;
+}
+.sp-cta:active{transform:translateX(-50%) scale(0.95);}
+@keyframes spCtaIn{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow:hidden;font-size:16px}
 
@@ -532,6 +545,7 @@ input[type=number]{-moz-appearance:textfield}
   </div>
   <div class="sp-bar-wrap"><div class="sp-bar-fill"></div></div>
   <div class="sp-version">v1.0</div>
+  <button class="sp-cta" onclick="hideSplash()">LETS GO 💥</button>
 </div>
 
 <!-- ══ ONBOARDING ══ -->
@@ -2959,7 +2973,7 @@ function init(){
   checkOnboarding();
   checkResumeWorkout();
   renderHome();
-  setTimeout(hideSplash, 2600);
+  // splash dismissed by tapping the LET'S GO button
 }
 
 init();
