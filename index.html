@@ -6,12 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Repzilla">
-<meta name="theme-color" content="#f97316">
-<meta name="description" content="Crush every rep. Earn every badge. Become a legend.">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<meta name="theme-color" content="#0a0a12">
 <title>Repzilla 🦖</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"></script>
 <style>
@@ -345,6 +340,9 @@ input[type=number]{-moz-appearance:textfield}
 .ex-card-name{font-weight:800;font-size:17px}
 .ex-card-grp{font-size:12px;color:var(--text2);margin-top:2px;font-weight:600}
 .ex-tip{padding:10px 16px;font-size:13px;color:var(--xp-color);background:rgba(251,191,36,.1);border-bottom:1px solid var(--surface3);line-height:1.5;font-weight:600}
+.watch-btn{display:inline-flex;align-items:center;gap:6px;margin:8px 16px 4px;padding:7px 14px;background:rgba(239,68,68,.15);border:1.5px solid rgba(239,68,68,.4);border-radius:20px;color:#ef4444;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;}
+.watch-btn:hover{background:rgba(239,68,68,.28);border-color:#ef4444;}
+.watch-btn svg{width:16px;height:16px;flex-shrink:0;}
 .ex-prev{padding:7px 16px;font-size:13px;color:var(--text3);background:var(--surface2);border-top:1px solid var(--surface3)}
 .ex-del-btn{background:none;border:none;color:var(--text3);cursor:pointer;font-size:26px;line-height:1;padding:0 4px;flex-shrink:0}
 
@@ -1256,60 +1254,60 @@ function filterInput(el){
 // Youth Exercise Library
 const BUILTIN = [
   // Chest
-  {id:'push-up',name:'Push-Up',group:'Chest',tip:'Keep your body straight like a plank. Lower your chest all the way down!'},
-  {id:'db-press',name:'Dumbbell Bench Press',group:'Chest',tip:'Ask a trainer to spot you. Lower slowly and push up strong!'},
-  {id:'chest-machine',name:'Chest Press Machine',group:'Chest',tip:'Adjust the seat so handles are at chest level. Great starting point!'},
-  {id:'incline-db-press',name:'Incline Dumbbell Press',group:'Chest',tip:'Focus on squeezing your chest at the top of each rep.'},
-  {id:'cable-fly',name:'Cable Fly',group:'Chest',tip:'Keep a slight bend in your elbows throughout. Bring the handles together like you\'re hugging a tree!'},
-  {id:'db-fly',name:'Dumbbell Fly',group:'Chest',tip:'Control the weight on the way down — no dropping! Feel the stretch.'},
+  {id:'push-up',name:'Push-Up',group:'Chest',tip:'Keep your body straight like a plank. Lower your chest all the way down!',video:'https://www.youtube.com/watch?v=WDIpL0pjun0'},
+  {id:'db-press',name:'Dumbbell Bench Press',group:'Chest',tip:'Ask a trainer to spot you. Lower slowly and push up strong!',video:'https://www.youtube.com/watch?v=VmB1G1K7v94'},
+  {id:'chest-machine',name:'Chest Press Machine',group:'Chest',tip:'Adjust the seat so handles are at chest level. Great starting point!',video:'https://www.youtube.com/watch?v=sqNwDkUU_Ps'},
+  {id:'incline-db-press',name:'Incline Dumbbell Press',group:'Chest',tip:'Focus on squeezing your chest at the top of each rep.',video:'https://www.youtube.com/watch?v=hChjZQhX1Ls'},
+  {id:'cable-fly',name:'Cable Fly',group:'Chest',tip:'Keep a slight bend in your elbows throughout. Bring the handles together like you\'re hugging a tree!',video:'https://www.youtube.com/watch?v=8Um35Es-ROE'},
+  {id:'db-fly',name:'Dumbbell Fly',group:'Chest',tip:'Control the weight on the way down — no dropping! Feel the stretch.',video:'https://www.youtube.com/watch?v=eozdVDA78K0'},
   // Back
-  {id:'lat-pulldown',name:'Lat Pulldown',group:'Back',tip:'Pull to your chest, not behind your neck. Imagine pulling your elbows to your pockets!'},
-  {id:'seated-row',name:'Seated Cable Row',group:'Back',tip:'Sit up tall and pull to your belly button. Keep your back straight!'},
-  {id:'db-row',name:'Dumbbell Row',group:'Back',tip:'Support yourself on the bench. Pull the weight to your hip — like starting a lawnmower!'},
-  {id:'pull-up',name:'Pull-Up (Assisted)',group:'Back',tip:'Use the assisted machine to make it the right difficulty. Work up to full pull-ups!'},
-  {id:'face-pull',name:'Face Pull',group:'Back',tip:'Pull towards your face and flare your elbows out to the sides.'},
-  {id:'back-extension',name:'Back Extension Machine',group:'Back',tip:'Adjust the seat height for your body. Great for strengthening your lower back!'},
+  {id:'lat-pulldown',name:'Lat Pulldown',group:'Back',tip:'Pull to your chest, not behind your neck. Imagine pulling your elbows to your pockets!',video:'https://www.youtube.com/watch?v=CAwf7n6Luuc'},
+  {id:'seated-row',name:'Seated Cable Row',group:'Back',tip:'Sit up tall and pull to your belly button. Keep your back straight!',video:'https://www.youtube.com/watch?v=7BkgqzC6WsM'},
+  {id:'db-row',name:'Dumbbell Row',group:'Back',tip:'Support yourself on the bench. Pull the weight to your hip — like starting a lawnmower!',video:'https://www.youtube.com/watch?v=fURsHPHgssI'},
+  {id:'pull-up',name:'Pull-Up (Assisted)',group:'Back',tip:'Use the assisted machine to make it the right difficulty. Work up to full pull-ups!',video:'https://www.youtube.com/watch?v=fnHeovkmkkk'},
+  {id:'face-pull',name:'Face Pull',group:'Back',tip:'Pull towards your face and flare your elbows out to the sides.',video:'https://www.youtube.com/watch?v=eTCBSFlCJ_s'},
+  {id:'back-extension',name:'Back Extension Machine',group:'Back',tip:'Adjust the seat height for your body. Great for strengthening your lower back!',video:'https://www.youtube.com/watch?v=dF_V3358Dkc'},
   // Shoulders
-  {id:'db-ohp',name:'Dumbbell Shoulder Press',group:'Shoulders',tip:'Keep your core tight and don\'t arch your back. Press straight up!'},
-  {id:'lateral-raise',name:'Lateral Raise',group:'Shoulders',tip:'Use lighter weight and raise to shoulder height only. Squeeze at the top!'},
-  {id:'front-raise',name:'Front Raise',group:'Shoulders',tip:'Alternate arms or do both together with light weight.'},
-  {id:'rear-delt-fly',name:'Rear Delt Fly',group:'Shoulders',tip:'Bend forward slightly and keep a soft bend in your elbows.'},
+  {id:'db-ohp',name:'Dumbbell Shoulder Press',group:'Shoulders',tip:'Keep your core tight and don\'t arch your back. Press straight up!',video:'https://www.youtube.com/watch?v=vlFGTI5JzjI'},
+  {id:'lateral-raise',name:'Lateral Raise',group:'Shoulders',tip:'Use lighter weight and raise to shoulder height only. Squeeze at the top!',video:'https://www.youtube.com/watch?v=nnH63icHYXY'},
+  {id:'front-raise',name:'Front Raise',group:'Shoulders',tip:'Alternate arms or do both together with light weight.',video:'https://www.youtube.com/watch?v=CH9JzDStL3U'},
+  {id:'rear-delt-fly',name:'Rear Delt Fly',group:'Shoulders',tip:'Bend forward slightly and keep a soft bend in your elbows.',video:'https://www.youtube.com/watch?v=0GSu6Z-Oj7U'},
   // Biceps
-  {id:'db-curl',name:'Dumbbell Curl',group:'Biceps',tip:'Keep your elbows pinned to your sides. No swinging — use your bicep!'},
-  {id:'hammer-curl',name:'Hammer Curl',group:'Biceps',tip:'Palms facing each other. Slow on the way down for extra gains!'},
-  {id:'cable-curl',name:'Cable Curl',group:'Biceps',tip:'Cables keep constant tension — great for building muscle!'},
-  {id:'preacher-curl',name:'Preacher Curl',group:'Biceps',tip:'The bench isolates your bicep perfectly. Slow and controlled!'},
+  {id:'db-curl',name:'Dumbbell Curl',group:'Biceps',tip:'Keep your elbows pinned to your sides. No swinging — use your bicep!',video:'https://www.youtube.com/watch?v=Jfp4b5Olc7A'},
+  {id:'hammer-curl',name:'Hammer Curl',group:'Biceps',tip:'Palms facing each other. Slow on the way down for extra gains!',video:'https://www.youtube.com/watch?v=zC3nLlEvin4'},
+  {id:'cable-curl',name:'Cable Curl',group:'Biceps',tip:'Cables keep constant tension — great for building muscle!',video:'https://www.youtube.com/watch?v=2MUEL4nL6hA'},
+  {id:'preacher-curl',name:'Preacher Curl',group:'Biceps',tip:'The bench isolates your bicep perfectly. Slow and controlled!',video:'https://www.youtube.com/watch?v=gSsEC9O6NYU'},
   // Triceps
-  {id:'tricep-pushdown',name:'Tricep Pushdown',group:'Triceps',tip:'Keep your elbows pinned to your sides. Push straight down and squeeze!'},
-  {id:'overhead-tricep',name:'Overhead Tricep Extension',group:'Triceps',tip:'Hold one dumbbell with both hands above your head. Lower behind your head slowly.'},
-  {id:'dips',name:'Dips (Assisted)',group:'Triceps',tip:'Use the assisted dip machine to adjust the difficulty. Works chest and triceps!'},
+  {id:'tricep-pushdown',name:'Tricep Pushdown',group:'Triceps',tip:'Keep your elbows pinned to your sides. Push straight down and squeeze!',video:'https://www.youtube.com/watch?v=nMqQNGo4Jtg'},
+  {id:'overhead-tricep',name:'Overhead Tricep Extension',group:'Triceps',tip:'Hold one dumbbell with both hands above your head. Lower behind your head slowly.',video:'https://www.youtube.com/watch?v=X-iV-cG8cYs'},
+  {id:'dips',name:'Dips (Assisted)',group:'Triceps',tip:'Use the assisted dip machine to adjust the difficulty. Works chest and triceps!',video:'https://www.youtube.com/watch?v=kbmVlw-i0Vs'},
   // Legs
-  {id:'leg-press',name:'Leg Press',group:'Legs',tip:'Feet shoulder-width apart. Don\'t let your knees cave in — push evenly!'},
-  {id:'leg-extension',name:'Leg Extension',group:'Legs',tip:'Slowly extend and slowly lower. Control is everything here!'},
-  {id:'leg-curl',name:'Leg Curl',group:'Legs',tip:'Pull your heels to your glutes as far as you can. Squeeze at the top!'},
-  {id:'calf-raise',name:'Calf Raise',group:'Legs',tip:'Full range of motion — all the way up on your toes and all the way down!'},
-  {id:'goblet-squat',name:'Goblet Squat',group:'Legs',tip:'Hold a dumbbell to your chest. Great way to learn perfect squat form!'},
-  {id:'lunges',name:'Lunges',group:'Legs',tip:'Step forward and drop your back knee toward the floor. Keep your chest up!'},
-  {id:'bulgarian-split',name:'Bulgarian Split Squat',group:'Legs',tip:'Back foot on the bench. Lower down slowly — this one burns!'},
-  {id:'squat',name:'Bodyweight Squat',group:'Legs',tip:'Feet shoulder-width apart. Sit back like you\'re sitting in a chair. Great warm-up!'},
+  {id:'leg-press',name:'Leg Press',group:'Legs',tip:'Feet shoulder-width apart. Don\'t let your knees cave in — push evenly!',video:'https://www.youtube.com/watch?v=8nm863C0c60'},
+  {id:'leg-extension',name:'Leg Extension',group:'Legs',tip:'Slowly extend and slowly lower. Control is everything here!',video:'https://www.youtube.com/watch?v=ljO4jkwv8wQ'},
+  {id:'leg-curl',name:'Leg Curl',group:'Legs',tip:'Pull your heels to your glutes as far as you can. Squeeze at the top!',video:'https://www.youtube.com/watch?v=i6m3Vp9H40Y'},
+  {id:'calf-raise',name:'Calf Raise',group:'Legs',tip:'Full range of motion — all the way up on your toes and all the way down!',video:'https://www.youtube.com/watch?v=M49slU9_0tY'},
+  {id:'goblet-squat',name:'Goblet Squat',group:'Legs',tip:'Hold a dumbbell to your chest. Great way to learn perfect squat form!',video:'https://www.youtube.com/watch?v=9KzZD_n2r64'},
+  {id:'lunges',name:'Lunges',group:'Legs',tip:'Step forward and drop your back knee toward the floor. Keep your chest up!',video:'https://www.youtube.com/watch?v=WzONHuAe6BY'},
+  {id:'bulgarian-split',name:'Bulgarian Split Squat',group:'Legs',tip:'Back foot on the bench. Lower down slowly — this one burns!',video:'https://www.youtube.com/watch?v=DeCnHqrN22U'},
+  {id:'squat',name:'Bodyweight Squat',group:'Legs',tip:'Feet shoulder-width apart. Sit back like you\'re sitting in a chair. Great warm-up!',video:'https://www.youtube.com/watch?v=ax3eO8xBZVU'},
   // Glutes
-  {id:'hip-thrust',name:'Hip Thrust',group:'Glutes',tip:'Drive through your heels and squeeze your glutes hard at the top!'},
-  {id:'glute-kickback',name:'Cable Glute Kickback',group:'Glutes',tip:'Stand tall and kick straight back. Squeeze your glute at the top!'},
+  {id:'hip-thrust',name:'Hip Thrust',group:'Glutes',tip:'Drive through your heels and squeeze your glutes hard at the top!',video:'https://www.youtube.com/watch?v=DyE2SpeVlc0'},
+  {id:'glute-kickback',name:'Cable Glute Kickback',group:'Glutes',tip:'Stand tall and kick straight back. Squeeze your glute at the top!',video:'https://www.youtube.com/watch?v=5jJNfIlKTmg'},
   // Core
-  {id:'plank',name:'Plank',group:'Core',tip:'Hold your body straight. Time yourself and try to beat your record every week!'},
-  {id:'crunches',name:'Crunches',group:'Core',tip:'Focus on curling your upper back up. Don\'t pull your neck — use your core!'},
-  {id:'leg-raise',name:'Leg Raise',group:'Core',tip:'Keep your lower back flat on the floor as you lower your legs.'},
-  {id:'russian-twist',name:'Russian Twist',group:'Core',tip:'Rotate side to side. Add a light weight when it gets too easy!'},
-  {id:'bicycle-crunch',name:'Bicycle Crunch',group:'Core',tip:'Elbow to opposite knee. Slow and controlled — feel every rep!'},
-  {id:'ab-wheel',name:'Ab Wheel',group:'Core',tip:'Start on your knees! This is super tough — build up slowly.'},
+  {id:'plank',name:'Plank',group:'Core',tip:'Hold your body straight. Time yourself and try to beat your record every week!',video:'https://www.youtube.com/watch?v=BQu26ABuVS0'},
+  {id:'crunches',name:'Crunches',group:'Core',tip:'Focus on curling your upper back up. Don\'t pull your neck — use your core!',video:'https://www.youtube.com/watch?v=GWIEON0VSaY'},
+  {id:'leg-raise',name:'Leg Raise',group:'Core',tip:'Keep your lower back flat on the floor as you lower your legs.',video:'https://www.youtube.com/watch?v=0gjDql_noY0'},
+  {id:'russian-twist',name:'Russian Twist',group:'Core',tip:'Rotate side to side. Add a light weight when it gets too easy!',video:'https://www.youtube.com/watch?v=9V9csctSKj0'},
+  {id:'bicycle-crunch',name:'Bicycle Crunch',group:'Core',tip:'Elbow to opposite knee. Slow and controlled — feel every rep!',video:'https://www.youtube.com/watch?v=PAEo-zRSanM'},
+  {id:'ab-wheel',name:'Ab Wheel',group:'Core',tip:'Start on your knees! This is super tough — build up slowly.',video:'https://www.youtube.com/watch?v=ikkOq5mHaho'},
   // Cardio
-  {id:'treadmill',name:'Treadmill Run',group:'Cardio',tip:'Warm up with a 5-min walk, then build your speed. Push yourself!'},
-  {id:'cycling',name:'Stationary Bike',group:'Cardio',tip:'Adjust the seat so your legs are almost fully extended at the bottom.'},
-  {id:'rowing-machine',name:'Rowing Machine',group:'Cardio',tip:'Push with your legs first, then lean back, then pull. Legs → body → arms!'},
-  {id:'elliptical',name:'Elliptical Trainer',group:'Cardio',tip:'Great for cardio without stressing your joints. Push and pull those handles!'},
-  {id:'jump-rope',name:'Jump Rope',group:'Cardio',tip:'Start with 30-second bursts and rest between rounds. Work up to 1 minute!'},
-  {id:'battle-ropes',name:'Battle Ropes',group:'Cardio',tip:'Alternate arms for 30-second bursts. It\'s harder than it looks!'},
-  {id:'stair-climber',name:'Stair Climber',group:'Cardio',tip:'Take your time and step all the way up. Feel that burn in your legs!'},
+  {id:'treadmill',name:'Treadmill Run',group:'Cardio',tip:'Warm up with a 5-min walk, then build your speed. Push yourself!',video:'https://www.youtube.com/watch?v=aKfJJ1TuyE4'},
+  {id:'cycling',name:'Stationary Bike',group:'Cardio',tip:'Adjust the seat so your legs are almost fully extended at the bottom.',video:'https://www.youtube.com/watch?v=jSEsIZ9ucgM'},
+  {id:'rowing-machine',name:'Rowing Machine',group:'Cardio',tip:'Push with your legs first, then lean back, then pull. Legs → body → arms!',video:'https://www.youtube.com/watch?v=XF_3ppHjQLI'},
+  {id:'elliptical',name:'Elliptical Trainer',group:'Cardio',tip:'Great for cardio without stressing your joints. Push and pull those handles!',video:'https://www.youtube.com/watch?v=j38LNpTLwzY'},
+  {id:'jump-rope',name:'Jump Rope',group:'Cardio',tip:'Start with 30-second bursts and rest between rounds. Work up to 1 minute!',video:'https://www.youtube.com/watch?v=s-8tbwbEZ68'},
+  {id:'battle-ropes',name:'Battle Ropes',group:'Cardio',tip:'Alternate arms for 30-second bursts. It\'s harder than it looks!',video:'https://www.youtube.com/watch?v=CzxBf5jM3M4'},
+  {id:'stair-climber',name:'Stair Climber',group:'Cardio',tip:'Take your time and step all the way up. Feel that burn in your legs!',video:'https://www.youtube.com/watch?v=SZU9Rm0sNOo'},
 ];
 
 const GROUP_ORDER = ['Chest','Back','Shoulders','Biceps','Triceps','Legs','Glutes','Core','Cardio','Custom'];
@@ -1322,37 +1320,37 @@ const BEGINNER_PROGRAM = [
   {id:'yb-day1',name:'Full Body A — Machine Power',
    desc:'Perfect for getting started! All machine exercises for safe, controlled movements. Focus on form over weight.',
    exercises:[
-     {id:'chest-machine',name:'Chest Press Machine',group:'Chest',sets:mks('','10-12')},
-     {id:'lat-pulldown',name:'Lat Pulldown',group:'Back',sets:mks('','10-12')},
-     {id:'leg-press',name:'Leg Press',group:'Legs',sets:mks('','12-15')},
-     {id:'leg-extension',name:'Leg Extension',group:'Legs',sets:mks('','12-15')},
-     {id:'leg-curl',name:'Leg Curl',group:'Legs',sets:mks('','12-15')},
-     {id:'calf-raise',name:'Calf Raise',group:'Legs',sets:mks('','15-20')},
-     {id:'plank',name:'Plank',group:'Core',sets:mks('','30s')},
-     {id:'treadmill',name:'Treadmill Run',group:'Cardio',sets:[{weight:'',reps:'10 min',done:false}]},
+     {id:'chest-machine',name:'Chest Press Machine',group:'Chest',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=sqNwDkUU_Ps'},
+     {id:'lat-pulldown',name:'Lat Pulldown',group:'Back',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=CAwf7n6Luuc'},
+     {id:'leg-press',name:'Leg Press',group:'Legs',sets:mks('','12-15'),video:'https://www.youtube.com/watch?v=8nm863C0c60'},
+     {id:'leg-extension',name:'Leg Extension',group:'Legs',sets:mks('','12-15'),video:'https://www.youtube.com/watch?v=ljO4jkwv8wQ'},
+     {id:'leg-curl',name:'Leg Curl',group:'Legs',sets:mks('','12-15'),video:'https://www.youtube.com/watch?v=i6m3Vp9H40Y'},
+     {id:'calf-raise',name:'Calf Raise',group:'Legs',sets:mks('','15-20'),video:'https://www.youtube.com/watch?v=M49slU9_0tY'},
+     {id:'plank',name:'Plank',group:'Core',sets:mks('','30s'),video:'https://www.youtube.com/watch?v=BQu26ABuVS0'},
+     {id:'treadmill',name:'Treadmill Run',group:'Cardio',sets:[{weight:'',reps:'10 min',done:false}],video:'https://www.youtube.com/watch?v=aKfJJ1TuyE4'},
    ],createdAt:'2024-01-01T00:00:00.000Z'},
   {id:'yb-day2',name:'Full Body B — Dumbbell Day',
    desc:'Dumbbells let you work each side independently. Great for building balance and coordination!',
    exercises:[
-     {id:'db-press',name:'Dumbbell Bench Press',group:'Chest',sets:mks('','10-12')},
-     {id:'db-row',name:'Dumbbell Row',group:'Back',sets:mks('','10-12')},
-     {id:'db-ohp',name:'Dumbbell Shoulder Press',group:'Shoulders',sets:mks('','10-12')},
-     {id:'goblet-squat',name:'Goblet Squat',group:'Legs',sets:mks('','12')},
-     {id:'lunges',name:'Lunges',group:'Legs',sets:mks('','12')},
-     {id:'db-curl',name:'Dumbbell Curl',group:'Biceps',sets:mks('','12')},
-     {id:'tricep-pushdown',name:'Tricep Pushdown',group:'Triceps',sets:mks('','12')},
-     {id:'crunches',name:'Crunches',group:'Core',sets:mks('','20')},
+     {id:'db-press',name:'Dumbbell Bench Press',group:'Chest',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=VmB1G1K7v94'},
+     {id:'db-row',name:'Dumbbell Row',group:'Back',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=fURsHPHgssI'},
+     {id:'db-ohp',name:'Dumbbell Shoulder Press',group:'Shoulders',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=vlFGTI5JzjI'},
+     {id:'goblet-squat',name:'Goblet Squat',group:'Legs',sets:mks('','12'),video:'https://www.youtube.com/watch?v=9KzZD_n2r64'},
+     {id:'lunges',name:'Lunges',group:'Legs',sets:mks('','12'),video:'https://www.youtube.com/watch?v=WzONHuAe6BY'},
+     {id:'db-curl',name:'Dumbbell Curl',group:'Biceps',sets:mks('','12'),video:'https://www.youtube.com/watch?v=Jfp4b5Olc7A'},
+     {id:'tricep-pushdown',name:'Tricep Pushdown',group:'Triceps',sets:mks('','12'),video:'https://www.youtube.com/watch?v=nMqQNGo4Jtg'},
+     {id:'crunches',name:'Crunches',group:'Core',sets:mks('','20'),video:'https://www.youtube.com/watch?v=GWIEON0VSaY'},
    ],createdAt:'2024-01-01T00:00:00.000Z'},
   {id:'yb-day3',name:'Full Body C — Cardio & Strength Mix',
    desc:'The best of both worlds! Cardio to build your engine, strength to build muscle. Fun and fast-paced!',
    exercises:[
-     {id:'cycling',name:'Stationary Bike',group:'Cardio',sets:[{weight:'',reps:'10 min',done:false}]},
-     {id:'push-up',name:'Push-Up',group:'Chest',sets:mks('BW','10-15')},
-     {id:'pull-up',name:'Pull-Up (Assisted)',group:'Back',sets:mks('','8-10')},
-     {id:'squat',name:'Bodyweight Squat',group:'Legs',sets:mks('BW','20')},
-     {id:'hip-thrust',name:'Hip Thrust',group:'Glutes',sets:mks('','15')},
-     {id:'plank',name:'Plank',group:'Core',sets:mks('','45s')},
-     {id:'battle-ropes',name:'Battle Ropes',group:'Cardio',sets:mks('','30s')},
+     {id:'cycling',name:'Stationary Bike',group:'Cardio',sets:[{weight:'',reps:'10 min',done:false}],video:'https://www.youtube.com/watch?v=jSEsIZ9ucgM'},
+     {id:'push-up',name:'Push-Up',group:'Chest',sets:mks('BW','10-15'),video:'https://www.youtube.com/watch?v=WDIpL0pjun0'},
+     {id:'pull-up',name:'Pull-Up (Assisted)',group:'Back',sets:mks('','8-10'),video:'https://www.youtube.com/watch?v=fnHeovkmkkk'},
+     {id:'squat',name:'Bodyweight Squat',group:'Legs',sets:mks('BW','20'),video:'https://www.youtube.com/watch?v=ax3eO8xBZVU'},
+     {id:'hip-thrust',name:'Hip Thrust',group:'Glutes',sets:mks('','15'),video:'https://www.youtube.com/watch?v=DyE2SpeVlc0'},
+     {id:'plank',name:'Plank',group:'Core',sets:mks('','45s'),video:'https://www.youtube.com/watch?v=BQu26ABuVS0'},
+     {id:'battle-ropes',name:'Battle Ropes',group:'Cardio',sets:mks('','30s'),video:'https://www.youtube.com/watch?v=CzxBf5jM3M4'},
    ],createdAt:'2024-01-01T00:00:00.000Z'},
 ];
 
@@ -1360,39 +1358,39 @@ const INTERMEDIATE_PROGRAM = [
   {id:'yi-day1',name:'Upper Body Power',
    desc:'Focus on chest, back, shoulders and arms. Quality reps over rushing — make every one count!',
    exercises:[
-     {id:'db-press',name:'Dumbbell Bench Press',group:'Chest',sets:mks('','8-10',4)},
-     {id:'incline-db-press',name:'Incline Dumbbell Press',group:'Chest',sets:mks('','10-12')},
-     {id:'lat-pulldown',name:'Lat Pulldown',group:'Back',sets:mks('','8-10',4)},
-     {id:'seated-row',name:'Seated Cable Row',group:'Back',sets:mks('','10-12')},
-     {id:'db-ohp',name:'Dumbbell Shoulder Press',group:'Shoulders',sets:mks('','10-12')},
-     {id:'lateral-raise',name:'Lateral Raise',group:'Shoulders',sets:mks('','15')},
-     {id:'db-curl',name:'Dumbbell Curl',group:'Biceps',sets:mks('','12')},
-     {id:'tricep-pushdown',name:'Tricep Pushdown',group:'Triceps',sets:mks('','12')},
+     {id:'db-press',name:'Dumbbell Bench Press',group:'Chest',sets:mks('','8-10',4),video:'https://www.youtube.com/watch?v=VmB1G1K7v94'},
+     {id:'incline-db-press',name:'Incline Dumbbell Press',group:'Chest',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=hChjZQhX1Ls'},
+     {id:'lat-pulldown',name:'Lat Pulldown',group:'Back',sets:mks('','8-10',4),video:'https://www.youtube.com/watch?v=CAwf7n6Luuc'},
+     {id:'seated-row',name:'Seated Cable Row',group:'Back',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=7BkgqzC6WsM'},
+     {id:'db-ohp',name:'Dumbbell Shoulder Press',group:'Shoulders',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=vlFGTI5JzjI'},
+     {id:'lateral-raise',name:'Lateral Raise',group:'Shoulders',sets:mks('','15'),video:'https://www.youtube.com/watch?v=nnH63icHYXY'},
+     {id:'db-curl',name:'Dumbbell Curl',group:'Biceps',sets:mks('','12'),video:'https://www.youtube.com/watch?v=Jfp4b5Olc7A'},
+     {id:'tricep-pushdown',name:'Tricep Pushdown',group:'Triceps',sets:mks('','12'),video:'https://www.youtube.com/watch?v=nMqQNGo4Jtg'},
    ],createdAt:'2024-01-01T00:00:00.000Z'},
   {id:'yi-day2',name:'Lower Body & Core',
    desc:'Strong legs are the foundation of everything! Core work to protect your back and boost your power.',
    exercises:[
-     {id:'leg-press',name:'Leg Press',group:'Legs',sets:mks('','10-12',4)},
-     {id:'goblet-squat',name:'Goblet Squat',group:'Legs',sets:mks('','12')},
-     {id:'leg-extension',name:'Leg Extension',group:'Legs',sets:mks('','12-15')},
-     {id:'leg-curl',name:'Leg Curl',group:'Legs',sets:mks('','12-15')},
-     {id:'hip-thrust',name:'Hip Thrust',group:'Glutes',sets:mks('','15')},
-     {id:'calf-raise',name:'Calf Raise',group:'Legs',sets:mks('','20',4)},
-     {id:'plank',name:'Plank',group:'Core',sets:mks('','60s')},
-     {id:'leg-raise',name:'Leg Raise',group:'Core',sets:mks('','15')},
-     {id:'bicycle-crunch',name:'Bicycle Crunch',group:'Core',sets:mks('','20')},
+     {id:'leg-press',name:'Leg Press',group:'Legs',sets:mks('','10-12',4),video:'https://www.youtube.com/watch?v=8nm863C0c60'},
+     {id:'goblet-squat',name:'Goblet Squat',group:'Legs',sets:mks('','12'),video:'https://www.youtube.com/watch?v=9KzZD_n2r64'},
+     {id:'leg-extension',name:'Leg Extension',group:'Legs',sets:mks('','12-15'),video:'https://www.youtube.com/watch?v=ljO4jkwv8wQ'},
+     {id:'leg-curl',name:'Leg Curl',group:'Legs',sets:mks('','12-15'),video:'https://www.youtube.com/watch?v=i6m3Vp9H40Y'},
+     {id:'hip-thrust',name:'Hip Thrust',group:'Glutes',sets:mks('','15'),video:'https://www.youtube.com/watch?v=DyE2SpeVlc0'},
+     {id:'calf-raise',name:'Calf Raise',group:'Legs',sets:mks('','20',4),video:'https://www.youtube.com/watch?v=M49slU9_0tY'},
+     {id:'plank',name:'Plank',group:'Core',sets:mks('','60s'),video:'https://www.youtube.com/watch?v=BQu26ABuVS0'},
+     {id:'leg-raise',name:'Leg Raise',group:'Core',sets:mks('','15'),video:'https://www.youtube.com/watch?v=0gjDql_noY0'},
+     {id:'bicycle-crunch',name:'Bicycle Crunch',group:'Core',sets:mks('','20'),video:'https://www.youtube.com/watch?v=PAEo-zRSanM'},
    ],createdAt:'2024-01-01T00:00:00.000Z'},
   {id:'yi-day3',name:'Full Body + Cardio Blast',
    desc:'Hit everything and finish with a cardio challenge. The hardest workout of the week — but you\'ve got this!',
    exercises:[
-     {id:'push-up',name:'Push-Up',group:'Chest',sets:mks('BW','15-20',4)},
-     {id:'pull-up',name:'Pull-Up (Assisted)',group:'Back',sets:mks('','8-10')},
-     {id:'bulgarian-split',name:'Bulgarian Split Squat',group:'Legs',sets:mks('','10')},
-     {id:'db-ohp',name:'Dumbbell Shoulder Press',group:'Shoulders',sets:mks('','12')},
-     {id:'hammer-curl',name:'Hammer Curl',group:'Biceps',sets:mks('','12')},
-     {id:'overhead-tricep',name:'Overhead Tricep Extension',group:'Triceps',sets:mks('','12')},
-     {id:'treadmill',name:'Treadmill Run',group:'Cardio',sets:[{weight:'',reps:'15 min',done:false}]},
-     {id:'rowing-machine',name:'Rowing Machine',group:'Cardio',sets:[{weight:'',reps:'5 min',done:false}]},
+     {id:'push-up',name:'Push-Up',group:'Chest',sets:mks('BW','15-20',4),video:'https://www.youtube.com/watch?v=WDIpL0pjun0'},
+     {id:'pull-up',name:'Pull-Up (Assisted)',group:'Back',sets:mks('','8-10'),video:'https://www.youtube.com/watch?v=fnHeovkmkkk'},
+     {id:'bulgarian-split',name:'Bulgarian Split Squat',group:'Legs',sets:mks('','10'),video:'https://www.youtube.com/watch?v=DeCnHqrN22U'},
+     {id:'db-ohp',name:'Dumbbell Shoulder Press',group:'Shoulders',sets:mks('','12'),video:'https://www.youtube.com/watch?v=vlFGTI5JzjI'},
+     {id:'hammer-curl',name:'Hammer Curl',group:'Biceps',sets:mks('','12'),video:'https://www.youtube.com/watch?v=zC3nLlEvin4'},
+     {id:'overhead-tricep',name:'Overhead Tricep Extension',group:'Triceps',sets:mks('','12'),video:'https://www.youtube.com/watch?v=X-iV-cG8cYs'},
+     {id:'treadmill',name:'Treadmill Run',group:'Cardio',sets:[{weight:'',reps:'15 min',done:false}],video:'https://www.youtube.com/watch?v=aKfJJ1TuyE4'},
+     {id:'rowing-machine',name:'Rowing Machine',group:'Cardio',sets:[{weight:'',reps:'5 min',done:false}],video:'https://www.youtube.com/watch?v=XF_3ppHjQLI'},
    ],createdAt:'2024-01-01T00:00:00.000Z'},
 ];
 
@@ -1492,6 +1490,7 @@ function getLevelProgress(xp){
 function exFind(id){ return db.getExercises().find(e=>e.id===id); }
 function exName(id){ return (exFind(id)||{}).name||id; }
 function exTip(id){ return (exFind(id)||{}).tip||''; }
+function exVideo(id){ return (exFind(id)||{}).video||''; }
 
 function groupExercises(arr,q=''){
   const f=q.toLowerCase();
@@ -2157,7 +2156,7 @@ function renderExList(){
         <div><div class="ex-card-name">${ex.name}</div><div class="ex-card-grp">${ex.group}</div></div>
         <button class="ex-del-btn" onclick="removeEx(${ei})">×</button>
       </div>
-      ${tip?`<div class="ex-tip">💡 ${tip}</div>`:''}
+      ${tip?`<div class="ex-tip">💡 ${tip}</div>`:''}${(()=>{const v=ex.video||exVideo(ex.id);return v?`<a class="watch-btn" href="${v}" target="_blank" rel="noopener"><svg viewBox='0 0 24 24' fill='currentColor'><path d='M8 5v14l11-7z'/></svg>▶ Watch How</a>`:'';})()}
       <div class="ex-prev">${prevText}</div>
       <div class="sets-wrap">
         <div class="sets-hdr"><span>#</span><span>Weight</span><span>Reps</span><span>✓</span></div>
