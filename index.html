@@ -3371,4 +3371,45 @@ function renderSquad(){
           <div class="challenge-nums"><span class="done">${prog} done</span><span class="goal">Goal: ${ch.goal}</span></div>
           <div style="display:flex;gap:8px;margin-top:10px">
             <button class="challenge-share-btn" style="flex:2" onclick="shareChallengeprogress('${ch.id}')">📤 Share Progress</button>
-            <button onclick="deleteChallenge('${ch.id}')" style="flex:1;padding:10px;border-radius:12px;background:none;border:1px solid var(--surface3);color:var(--text3);font-size:13px;font-weight:700;cur
+            <button onclick="deleteChallenge('${ch.id}')" style="flex:1;padding:10px;border-radius:12px;background:none;border:1px solid var(--surface3);color:var(--text3);font-size:13px;font-weight:700;cursor:pointer">🗑</button>
+          </div>
+        </div>
+      </div>`;
+    }).join(''):`<div class="empty" style="padding:24px 24px 16px"><div class="empty-icon">⚡</div><div class="empty-text">No challenges yet!<br>Create one and invite your friends.</div></div>`}
+
+    <div class="slbl" style="margin-top:8px">Badges 🏅</div>
+    <div style="margin:0 16px 12px;background:var(--surface);border-radius:14px;padding:14px 16px">
+      <div style="font-size:14px;color:var(--text2);margin-bottom:10px;font-weight:600">${earnedBadges.length} of ${BADGE_DEFS.length} badges earned</div>
+      <div style="background:var(--surface3);border-radius:6px;height:10px;overflow:hidden">
+        <div style="height:100%;background:var(--grad);border-radius:6px;width:${Math.round((earnedBadges.length/BADGE_DEFS.length)*100)}%;transition:width .5s"></div>
+      </div>
+    </div>
+    <div class="badge-grid">
+      ${BADGE_DEFS.map(def=>{
+        const earned=earnedIds.has(def.id);
+        return `<div class="badge-item${earned?'':' locked'}">
+          <div class="badge-emoji">${def.emoji}</div>
+          <div class="badge-name">${def.name}</div>
+          <div class="badge-desc">${def.desc}</div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="pad"></div>`;
+}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+function init(){
+  spawnParticles();
+  loadSavedTheme();
+  checkOnboarding();
+  checkResumeWorkout();
+  renderHome();
+  // splash dismissed by tapping LET'S GO button
+}
+
+init();
+</script>
+</body>
+</html>
