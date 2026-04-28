@@ -355,6 +355,19 @@ input[type=number]{-moz-appearance:textfield}
 .ex-card-name{font-weight:800;font-size:17px}
 .ex-card-grp{font-size:12px;color:var(--text2);margin-top:2px;font-weight:600}
 .ex-tip{padding:10px 16px;font-size:13px;color:var(--xp-color);background:rgba(251,191,36,.1);border-bottom:1px solid var(--surface3);line-height:1.5;font-weight:600}
+.pc-modal-pin{display:flex;gap:8px;justify-content:center;margin:16px 0}
+.pc-pin-input{width:48px;height:56px;border-radius:12px;border:2px solid var(--surface3);background:var(--surface2);color:var(--text);font-size:24px;font-weight:900;text-align:center;outline:none}
+.pc-pin-input:focus{border-color:var(--accent)}
+.wc-class-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--surface3)}
+.wc-class-row:last-child{border-bottom:none}
+.wc-class-emoji{font-size:22px;width:30px;text-align:center}
+.wc-class-info{flex:1}
+.wc-class-name{font-weight:800;font-size:15px}
+.wc-class-desc{font-size:12px;color:var(--text3);margin-top:2px}
+.wc-class-sel{width:20px;height:20px;border-radius:50%;border:2px solid var(--surface3);background:var(--surface2);cursor:pointer;transition:all .2s}
+.wc-class-sel.selected{background:var(--accent);border-color:var(--accent)}
+.pc-btn{display:inline-block;padding:6px 14px;border-radius:20px;border:1.5px solid var(--accent);color:var(--accent);font-size:13px;font-weight:700;cursor:pointer;background:none;transition:all .2s}
+.pc-btn:active{background:var(--accent);color:#fff}
 .watch-btn{display:inline-flex;align-items:center;gap:6px;margin:8px 16px 4px;padding:7px 14px;background:rgba(239,68,68,.15);border:1.5px solid rgba(239,68,68,.4);border-radius:20px;color:#ef4444;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;}
 .watch-btn:hover{background:rgba(239,68,68,.28);border-color:#ef4444;}
 .watch-btn svg{width:16px;height:16px;flex-shrink:0;}
@@ -445,6 +458,30 @@ input[type=number]{-moz-appearance:textfield}
 .ob-body{padding:0 24px 48px;flex:1}
 .ob-consent{background:var(--surface2);border-radius:12px;padding:14px;font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px}
 .ob-consent strong{color:var(--text)}
+.ob-step{display:none}
+.ob-step.active{display:block}
+.ob-progress{display:flex;gap:6px;justify-content:center;padding:16px 0 8px}
+.ob-dot{width:8px;height:8px;border-radius:50%;background:var(--surface3);transition:background .3s}
+.ob-dot.active{background:var(--accent)}
+.ob-dot.done{background:rgba(249,115,22,.4)}
+.ob-age-btns{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.ob-age-btn{padding:18px;border-radius:16px;border:2px solid var(--surface3);background:var(--surface2);color:var(--text);font-size:17px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center}
+.ob-age-btn:active{transform:scale(.97)}
+.ob-age-btn.yes{border-color:var(--accent);color:var(--accent)}
+.ob-age-btn.no{border-color:#6366f1;color:#818cf8}
+.ob-hand-device{text-align:center;padding:24px 0}
+.ob-hand-device .hd-icon{font-size:72px;display:block;margin-bottom:16px;animation:pop .6s cubic-bezier(.34,1.56,.64,1)}
+.ob-hand-device h2{font-size:24px;font-weight:900;margin-bottom:10px}
+.ob-hand-device p{font-size:15px;color:var(--text2);line-height:1.6}
+.tc-scroll{background:var(--surface2);border-radius:12px;padding:16px;max-height:340px;overflow-y:auto;font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:14px;border:1px solid var(--surface3)}
+.tc-scroll h3{color:var(--text);font-size:15px;font-weight:800;margin:14px 0 6px}
+.tc-scroll h3:first-child{margin-top:0}
+.tc-scroll p{margin-bottom:8px}
+.tc-read-note{font-size:12px;color:var(--text3);text-align:center;margin-bottom:12px;transition:opacity .3s}
+.ob-section-title{font-size:22px;font-weight:900;margin-bottom:6px}
+.ob-section-sub{font-size:14px;color:var(--text2);line-height:1.5;margin-bottom:20px}
+.ob-parent-info{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:14px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.7}
+.ob-parent-info strong{color:#818cf8}
 .consent-check{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;cursor:pointer}
 .consent-check input[type=checkbox]{width:20px;height:20px;accent-color:var(--accent);margin-top:2px;flex-shrink:0;cursor:pointer}
 .consent-check label{font-size:14px;color:var(--text2);line-height:1.4;cursor:pointer}
@@ -557,40 +594,132 @@ input[type=number]{-moz-appearance:textfield}
     <div class="ob-title">Rep<span>zilla</span></div>
     <div class="ob-sub">Crush every rep. Earn every badge. Become a legend.</div>
   </div>
+
+  <!-- Progress dots -->
+  <div class="ob-progress">
+    <div class="ob-dot active" id="dot-0"></div>
+    <div class="ob-dot" id="dot-1"></div>
+    <div class="ob-dot" id="dot-2"></div>
+    <div class="ob-dot" id="dot-3"></div>
+  </div>
+
   <div class="ob-body">
-    <div class="fg">
-      <label class="flbl">What's your name?</label>
-      <input class="finp" id="ob-name" placeholder="Enter your name" autocomplete="off" autocorrect="off" autocapitalize="words" oninput="filterInput(this)"/>
+
+    <!-- ── STEP 0: Age Gate ── -->
+    <div class="ob-step active" id="ob-step-0">
+      <div class="ob-section-title">👋 Welcome!</div>
+      <div class="ob-section-sub">Before we get started, we need to check one thing.</div>
+      <div class="ob-consent">
+        <strong>Are you a parent or guardian setting this up?</strong><br><br>
+        Repzilla is designed for young athletes ages 11–18. A parent or guardian must review and agree to our Terms &amp; Conditions before any user can access the app.
+      </div>
+      <div class="ob-age-btns">
+        <button class="ob-age-btn yes" onclick="obAgeGate(true)">✅ Yes — I am 18 or older</button>
+        <button class="ob-age-btn no" onclick="obAgeGate(false)">🧒 No — I am under 18</button>
+      </div>
     </div>
-    <div class="fg">
-      <label class="flbl">Age group</label>
-      <select class="finp" id="ob-age">
-        <option value="11-12">11–12 years</option>
-        <option value="13-14" selected>13–14 years</option>
-      </select>
+
+    <!-- ── STEP 1: Hand to Parent (shown if under 18) OR Parent Info (if 18+) ── -->
+    <div class="ob-step" id="ob-step-1">
+      <div id="ob-step-1-under" style="display:none">
+        <div class="ob-hand-device">
+          <span class="hd-icon">📱</span>
+          <h2>Hand the device to a parent or guardian</h2>
+          <p>A parent or guardian needs to review and agree to Repzilla's Terms &amp; Conditions before you can start. Ask them to take over from here!</p>
+        </div>
+        <div class="ob-consent" style="border-color:rgba(99,102,241,.4);background:rgba(99,102,241,.08)">
+          <strong style="color:#818cf8">👋 Hi Parent / Guardian!</strong><br><br>
+          Your child wants to use Repzilla to track their fitness journey. Please continue to review our Terms &amp; Conditions and set up their profile.
+        </div>
+        <button class="btn btn-primary btn-full" onclick="obGoStep(2)">Continue as Parent / Guardian →</button>
+      </div>
+      <div id="ob-step-1-over" style="display:none">
+        <div class="ob-section-title">👪 About Repzilla</div>
+        <div class="ob-section-sub">Here's what this app is all about.</div>
+        <div class="ob-parent-info">
+          <strong>🌱 A lifelong fitness foundation</strong><br>
+          Repzilla gives young athletes a place to set personalised fitness, lifestyle and health goals — habits they can carry with them throughout their lives. We believe that building a positive relationship with movement and exercise during youth is one of the greatest gifts a young person can receive.
+        </div>
+        <div class="ob-parent-info">
+          <strong>💪 What your child will do</strong><br>
+          Log workouts • Track progress over time • Earn achievement badges • Stay motivated with body-positive messaging • Build healthy habits in a safe, supportive environment.
+        </div>
+        <div class="ob-parent-info">
+          <strong>🛡️ Our commitment to safety</strong><br>
+          All content is age-appropriate. Our motivational messaging focuses exclusively on strength, effort, health and wellbeing — never appearance, weight or body size.
+        </div>
+        <button class="btn btn-primary btn-full" onclick="obGoStep(2)">Review Terms &amp; Conditions →</button>
+      </div>
     </div>
-    <div class="ob-consent">
-      <strong>🛡️ Parent / Guardian Notice</strong><br>
-      Repzilla is designed for ages 11–14. All workout programs emphasise safe, controlled movements with proper form. We recommend:
-      <br>• Always warm up before working out
-      <br>• Use weights you can control with good form
-      <br>• Rest at least one day between sessions
-      <br>• Ask a gym trainer for help with any exercise
-      <br>• Stop if you feel pain (not to be confused with effort!)
+
+    <!-- ── STEP 2: Terms & Conditions ── -->
+    <div class="ob-step" id="ob-step-2">
+      <div class="ob-section-title">📋 Terms &amp; Conditions</div>
+      <div class="ob-section-sub">Please read carefully. Scroll to the bottom to continue.</div>
+      <div class="tc-scroll" id="tc-scroll" onscroll="checkTcScroll()">
+
+        <h3>1. Use at Your Own Risk</h3>
+        <p>Repzilla is a fitness tracking application. Physical exercise carries inherent risks including, but not limited to, muscle strain, injury, and in rare cases, serious physical harm. By using this app, you acknowledge and accept these risks. Always consult a qualified medical professional before beginning any new exercise program.</p>
+
+        <h3>2. Not an Instructional App</h3>
+        <p>Repzilla is a workout logging and progress tracking tool only. It is <strong>not</strong> a personal trainer, fitness instructor, or instructional platform. Any exercise demonstrations, tips, or video links provided within the app are for general reference only and do not constitute professional fitness instruction or medical advice. Always seek guidance from a qualified, certified fitness professional for instruction on proper exercise technique.</p>
+
+        <h3>3. Parental Supervision Required</h3>
+        <p>Repzilla is intended for users ages 11–18. Users under the age of 18 must have a parent or guardian review and agree to these Terms &amp; Conditions. A parent or guardian should actively supervise all gym and exercise activities undertaken by users under 18. It is the parent or guardian's responsibility to ensure activities are appropriate for their child's age, fitness level, and physical condition.</p>
+
+        <h3>4. No Liability</h3>
+        <p>To the fullest extent permitted by law, Repzilla, its creators, and contributors accept no liability for any injury, loss, or damage of any kind arising from use of this application or participation in any exercise activities logged within it. Use of this app constitutes full acceptance of this limitation of liability.</p>
+
+        <h3>5. Health &amp; Wellbeing</h3>
+        <p>Repzilla promotes a positive, healthy relationship with fitness and physical activity. Our motivational content is focused exclusively on strength, effort, health and overall wellbeing. We do not promote weight loss, body modification, or any content related to physical appearance. If you or your child experiences any physical or emotional distress related to exercise, please seek support from a qualified professional.</p>
+
+        <h3>6. Privacy &amp; Data</h3>
+        <p>All data entered into Repzilla is stored locally on your device only. We do not collect, transmit, or store any personal information on external servers. No account is required. Your data stays with you.</p>
+
+        <h3>7. Agreement</h3>
+        <p>By tapping "I Agree" below, the parent or guardian confirms they have read and understood these Terms &amp; Conditions in full and consent to their child's use of Repzilla under their supervision.</p>
+
+      </div>
+      <p class="tc-read-note" id="tc-note">⬇️ Scroll down to read the full Terms &amp; Conditions</p>
+      <div class="consent-check" id="tc-agree-wrap" style="display:none">
+        <input type="checkbox" id="tc-agree"/>
+        <label for="tc-agree">I have read and agree to the Repzilla Terms &amp; Conditions on behalf of myself and/or my child.</label>
+      </div>
+      <button class="btn btn-primary btn-full" id="tc-continue-btn" style="display:none" onclick="obGoStep(3)">I Agree — Continue →</button>
     </div>
-    <div class="ob-consent" style="margin-top:10px;border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.08)">
-      <strong>💚 Repzilla Positivity Pledge</strong><br>
-      Repzilla is a place to celebrate what your body <em>can do</em> — not what it looks like.<br>
-      <br>• We focus on <strong>strength, effort &amp; progress</strong>
-      <br>• We never talk about weight loss or body size
-      <br>• We celebrate every rep, every workout, every you
-      <br>• Every body is a gym body 💪
+
+    <!-- ── STEP 3: Profile Setup ── -->
+    <div class="ob-step" id="ob-step-3">
+      <div class="ob-section-title">🦖 Set Up Your Profile</div>
+      <div class="ob-section-sub">Almost there! Just a couple of details.</div>
+      <div class="fg">
+        <label class="flbl">What's your name?</label>
+        <input class="finp" id="ob-name" placeholder="Enter your name" autocomplete="off" autocorrect="off" autocapitalize="words" oninput="filterInput(this)"/>
+      </div>
+      <div class="fg">
+        <label class="flbl">Age group</label>
+        <select class="finp" id="ob-age">
+          <option value="11-12">11–12 years</option>
+          <option value="13-14" selected>13–14 years</option>
+          <option value="15-16">15–16 years</option>
+          <option value="17-18">17–18 years</option>
+        </select>
+      </div>
+      <div class="ob-consent" style="border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.08)">
+        <strong>💚 The Repzilla Positivity Pledge</strong><br>
+        Repzilla is a place to celebrate what your body <em>can do</em> — not what it looks like.<br><br>
+        • We focus on <strong>strength, effort &amp; progress</strong><br>
+        • We celebrate every rep, every workout, every you<br>
+        • Every body is a gym body 💪<br>
+        • Your health and happiness matter most
+      </div>
+      <div class="consent-check">
+        <input type="checkbox" id="ob-consent"/>
+        <label for="ob-consent">A parent or guardian has reviewed and agreed to the Terms &amp; Conditions and will supervise my gym activities.</label>
+      </div>
+      <button class="btn btn-primary btn-full" style="padding:16px;font-size:16px;margin-top:8px" onclick="completeOnboarding()">Let's Go! 🚀</button>
     </div>
-    <div class="consent-check">
-      <input type="checkbox" id="ob-consent"/>
-      <label for="ob-consent">A parent or guardian has reviewed the safety information above and agrees to supervise my gym activities.</label>
-    </div>
-    <button class="btn btn-primary btn-full" style="padding:16px;font-size:16px" onclick="completeOnboarding()">Let's Go! 🚀</button>
+
   </div>
 </div>
 
@@ -955,6 +1084,16 @@ const BADGE_DEFS = [
     check:(ws)=>ws.some(w=>w.duration>=2700)},
   {id:'positive-vibes',name:'Positive Vibes',desc:'Keep it positive — log 3 workouts focused on effort, not appearance',emoji:'💚',
     check:(ws)=>ws.length>=3},
+  {id:'wc-bronze',name:'Bronze Class',desc:'Reach Bronze weight class in any exercise',emoji:'🥉',
+    check:(ws,str,wc)=>Object.values(wc).some(e=>e.classIdx>=1)},
+  {id:'wc-silver',name:'Silver Class',desc:'Reach Silver weight class in any exercise',emoji:'🥈',
+    check:(ws,str,wc)=>Object.values(wc).some(e=>e.classIdx>=2)},
+  {id:'wc-gold',name:'Gold Class',desc:'Reach Gold weight class in any exercise',emoji:'🥇',
+    check:(ws,str,wc)=>Object.values(wc).some(e=>e.classIdx>=3)},
+  {id:'wc-elite',name:'Elite Class',desc:'Reach Elite weight class in any exercise',emoji:'💎',
+    check:(ws,str,wc)=>Object.values(wc).some(e=>e.classIdx>=4)},
+  {id:'wc-consistent',name:'Class Act',desc:'Reach Bronze class in 5 different exercises',emoji:'🏅',
+    check:(ws,str,wc)=>Object.values(wc).filter(e=>e.classIdx>=1).length>=5},
 ];
 
 // Set completion messages
@@ -993,6 +1132,94 @@ const FINISH_MESSAGES = [
 // ══════════════════════════════════════════
 // LOGOUT
 // ══════════════════════════════════════════
+// ── Parental Controls ──────────────────────────────────────
+function openPc(){
+  document.getElementById('pc-overlay').classList.add('open');
+  const pc = getParentalControls();
+  const hasPIN = !!pc.pin;
+  document.getElementById('pc-pin-hint').textContent = hasPIN ? '' : '(First time? Enter a new PIN to set it)';
+  document.getElementById('pc-pin-section').style.display='block';
+  document.getElementById('pc-controls-section').style.display='none';
+  document.getElementById('pc-pin-err').style.display='none';
+  ['pc-p1','pc-p2','pc-p3','pc-p4'].forEach(id=>{ document.getElementById(id).value=''; });
+  setTimeout(()=>document.getElementById('pc-p1').focus(),200);
+}
+function closePc(){
+  document.getElementById('pc-overlay').classList.remove('open');
+}
+function pcPinNext(el, nextId){
+  el.value = el.value.replace(/[^0-9]/g,'');
+  if(el.value.length===1 && nextId) document.getElementById(nextId).focus();
+  if(!nextId && el.value.length===1) pcCheckPin();
+}
+function pcGetEnteredPin(){
+  return ['pc-p1','pc-p2','pc-p3','pc-p4'].map(id=>document.getElementById(id).value).join('');
+}
+function pcCheckPin(){
+  const entered = pcGetEnteredPin();
+  if(entered.length<4){ return; }
+  const pc = getParentalControls();
+  if(!pc.pin){
+    // First time — set PIN
+    pc.pin = entered;
+    pc.maxClassIdx = 3; // default Gold
+    saveParentalControls(pc);
+    pcShowControls();
+  } else if(pc.pin === entered){
+    pcShowControls();
+  } else {
+    document.getElementById('pc-pin-err').style.display='block';
+    ['pc-p1','pc-p2','pc-p3','pc-p4'].forEach(id=>{ document.getElementById(id).value=''; });
+    document.getElementById('pc-p1').focus();
+  }
+}
+function pcShowControls(){
+  document.getElementById('pc-pin-section').style.display='none';
+  document.getElementById('pc-controls-section').style.display='block';
+  pcRenderClassList();
+  pcRenderProgress();
+}
+function pcRenderClassList(){
+  const pc = getParentalControls();
+  const maxIdx = pc.maxClassIdx !== undefined ? pc.maxClassIdx : 3;
+  const list = document.getElementById('pc-class-list');
+  list.innerHTML = WEIGHT_CLASSES.map((wc,i)=>`
+    <div class="wc-class-row">
+      <div class="wc-class-emoji">${wc.emoji}</div>
+      <div class="wc-class-info">
+        <div class="wc-class-name" style="color:${wc.color}">${wc.name}</div>
+        <div class="wc-class-desc">${wc.desc}</div>
+      </div>
+      <div class="wc-class-sel ${i===maxIdx?'selected':''}" onclick="pcSetMaxClass(${i})" id="wc-sel-${i}"></div>
+    </div>`).join('');
+}
+function pcSetMaxClass(idx){
+  const pc = getParentalControls();
+  pc.maxClassIdx = idx;
+  saveParentalControls(pc);
+  pcRenderClassList();
+}
+function pcRenderProgress(){
+  const wc = getWcProgress();
+  const container = document.getElementById('pc-progress-list');
+  const entries = Object.entries(wc);
+  if(!entries.length){ container.innerHTML='<p style="color:var(--text3)">No weight class progress yet.</p>'; return; }
+  container.innerHTML = entries.map(([exId, data])=>{
+    const ex = exFind(exId)||{name:exId};
+    const cls = WEIGHT_CLASSES[data.classIdx]||WEIGHT_CLASSES[0];
+    const needed = 3 - (data.count||0);
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--surface3)">
+      <span>${ex.name}</span>
+      <span style="color:${cls.color};font-weight:700">${cls.emoji} ${cls.name} ${data.classIdx<4?'<span style="color:var(--text3);font-size:11px">(${needed} more sessions to advance)</span>':''}</span>
+    </div>`;
+  }).join('');
+}
+function pcResetProgress(){
+  if(!confirm('Reset all weight class progress? This cannot be undone.')) return;
+  localStorage.removeItem(WC_KEY);
+  pcRenderProgress();
+}
+
 function openLogoutConfirm(){
   document.getElementById('logout-overlay').classList.add('open');
 }
@@ -1173,38 +1400,38 @@ function closeThemePicker(){
 // DAILY MOTIVATIONAL QUOTES
 // ══════════════════════════════════════════
 const DAILY_QUOTES = [
-  {text:"The only bad workout is the one that didn't happen.", author:"Unknown"},
-  {text:"Champions aren't made in gyms. Champions are made from something they have deep inside them.", author:"Muhammad Ali"},
-  {text:"Success isn't given. It's earned — in the gym, on the track, in the field.", author:"Unknown"},
-  {text:"Don't wish for it. Work for it.", author:"Unknown"},
+  {text:"Every body is capable of amazing things. Yours just proved it today.", author:"Repzilla"},
+  {text:"Health is not a size. It's a feeling — and today you chose it.", author:"Repzilla"},
+  {text:"You don't train to look a certain way. You train to feel strong, capable and alive.", author:"Repzilla"},
+  {text:"Movement is a gift. Every workout is you saying thank you to your body.", author:"Repzilla"},
+  {text:"Your worth has nothing to do with how you look. It has everything to do with who you are.", author:"Repzilla"},
+  {text:"Strong is not a size. Strong is a feeling — and you're building it every day.", author:"Repzilla"},
+  {text:"The goal isn't a perfect body. The goal is a healthy, happy life.", author:"Repzilla"},
+  {text:"Celebrate what your body can DO, not what it looks like.", author:"Repzilla"},
+  {text:"You are braver than you believe, stronger than you seem, and more capable than you know.", author:"A.A. Milne"},
+  {text:"Fall seven times, stand up eight.", author:"Japanese Proverb"},
   {text:"Every expert was once a beginner. Start where you are.", author:"Unknown"},
   {text:"It's not about being the best. It's about being better than you were yesterday.", author:"Unknown"},
   {text:"The secret to getting ahead is getting started.", author:"Mark Twain"},
-  {text:"Hard work beats talent when talent doesn't work hard.", author:"Tim Notke"},
   {text:"Believe you can and you're halfway there.", author:"Theodore Roosevelt"},
-  {text:"You are braver than you believe, stronger than you seem.", author:"A.A. Milne"},
-  {text:"The more you sweat in training, the less you bleed in battle.", author:"Unknown"},
-  {text:"Fall seven times, stand up eight.", author:"Japanese Proverb"},
   {text:"You don't have to be great to start, but you have to start to be great.", author:"Zig Ziglar"},
-  {text:"Strength doesn't come from what you can do. It comes from overcoming what you thought you couldn't.", author:"Rikki Rogers"},
-  {text:"Your body can stand almost anything. It's your mind you have to convince.", author:"Unknown"},
-  {text:"Push yourself because no one else is going to do it for you.", author:"Unknown"},
-  {text:"Train your body to do what your mind already believes.", author:"Unknown"},
-  {text:"Every rep you finish is a rep your future self will thank you for.", author:"Unknown"},
-  {text:"Great athletes are built one rep at a time.", author:"Unknown"},
-  {text:"It's supposed to be hard. If it wasn't hard, everyone would do it. The hard is what makes it great.", author:"A League of Their Own"},
-  {text:"The pain you feel today will be the strength you feel tomorrow.", author:"Unknown"},
-  {text:"You are capable of amazing things.", author:"Unknown"},
-  {text:"Sweat is just fat crying — and effort cheering.", author:"Unknown"},
-  {text:"First, master the basics. Then, there are no limits.", author:"Unknown"},
-  {text:"One more rep. One more set. One more step.", author:"Unknown"},
-  {text:"Do something today that your future self will thank you for.", author:"Sean Patrick Flanery"},
-  {text:"The gym is my playground and progress is my reward.", author:"Unknown"},
   {text:"Fitness is not about being better than someone else. It's about being better than you used to be.", author:"Unknown"},
-  {text:"Energy and persistence conquer all things.", author:"Benjamin Franklin"},
-  {text:"You were given this life because you are strong enough to live it.", author:"Unknown"},
   {text:"Small daily improvements over time lead to stunning results.", author:"Robin Sharma"},
-  {text:"Discipline is choosing between what you want now and what you want most.", author:"Abraham Lincoln"},
+  {text:"Energy and persistence conquer all things.", author:"Benjamin Franklin"},
+  {text:"Do something today that your future self will thank you for.", author:"Sean Patrick Flanery"},
+  {text:"Strength comes from overcoming what you once thought you couldn't.", author:"Rikki Rogers"},
+  {text:"Hard work beats talent when talent doesn't work hard.", author:"Tim Notke"},
+  {text:"Every rep you finish is a rep your future self will thank you for.", author:"Repzilla"},
+  {text:"One more rep. One more set. One more step toward your best self.", author:"Repzilla"},
+  {text:"Your body is not an ornament — it's a vehicle. Take care of it.", author:"Taryn Brumfitt"},
+  {text:"Rest when you need to. Move when you can. Be kind to yourself always.", author:"Repzilla"},
+  {text:"Consistency over perfection. Showing up beats being perfect every time.", author:"Repzilla"},
+  {text:"You are building habits today that will carry you for a lifetime.", author:"Repzilla"},
+  {text:"Fitness is a journey, not a destination — enjoy every step of the way.", author:"Repzilla"},
+  {text:"Your mental health matters as much as your physical health. Both deserve care.", author:"Repzilla"},
+  {text:"There is no finish line. There is only the joy of moving forward.", author:"Repzilla"},
+  {text:"The gym is a place to build yourself up — never to tear yourself down.", author:"Repzilla"},
+  {text:"Nourish your body. Move your body. Be grateful for your body.", author:"Repzilla"},
 ];
 
 function getDailyQuote(){
@@ -1410,6 +1637,103 @@ const INTERMEDIATE_PROGRAM = [
    ],createdAt:'2024-01-01T00:00:00.000Z'},
 ];
 
+// ── 15-16 Senior Program (3 days, strength + cardio focus) ──────────────
+const SENIOR_PROGRAM = [
+  {id:'ys-day1',name:'Senior A — Upper Strength & Cardio',
+   desc:'Compound upper body movements plus cardio intervals. Build real-world strength and endurance.',
+   ageTag:'15-16',
+   exercises:[
+     {id:'treadmill',name:'Treadmill Run',group:'Cardio',sets:[{weight:'',reps:'10 min warm-up',done:false}],video:'https://www.youtube.com/watch?v=aKfJJ1TuyE4'},
+     {id:'db-press',name:'Dumbbell Bench Press',group:'Chest',sets:mks('','8-10',4),video:'https://www.youtube.com/watch?v=VmB1G1K7v94'},
+     {id:'incline-db-press',name:'Incline Dumbbell Press',group:'Chest',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=hChjZQhX1Ls'},
+     {id:'lat-pulldown',name:'Lat Pulldown',group:'Back',sets:mks('','8-10',4),video:'https://www.youtube.com/watch?v=CAwf7n6Luuc'},
+     {id:'seated-row',name:'Seated Cable Row',group:'Back',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=7BkgqzC6WsM'},
+     {id:'db-ohp',name:'Dumbbell Shoulder Press',group:'Shoulders',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=vlFGTI5JzjI'},
+     {id:'db-curl',name:'Dumbbell Curl',group:'Biceps',sets:mks('','12'),video:'https://www.youtube.com/watch?v=Jfp4b5Olc7A'},
+     {id:'tricep-pushdown',name:'Tricep Pushdown',group:'Triceps',sets:mks('','12'),video:'https://www.youtube.com/watch?v=nMqQNGo4Jtg'},
+     {id:'jump-rope',name:'Jump Rope',group:'Cardio',sets:mks('','60s',4),video:'https://www.youtube.com/watch?v=s-8tbwbEZ68'},
+   ],createdAt:'2024-01-01T00:00:00.000Z'},
+  {id:'ys-day2',name:'Senior B — Lower Strength & Core',
+   desc:'Legs and core are your foundation. Heavy lower body work paired with core stability for athletic performance.',
+   ageTag:'15-16',
+   exercises:[
+     {id:'cycling',name:'Stationary Bike',group:'Cardio',sets:[{weight:'',reps:'10 min warm-up',done:false}],video:'https://www.youtube.com/watch?v=jSEsIZ9ucgM'},
+     {id:'leg-press',name:'Leg Press',group:'Legs',sets:mks('','8-12',4),video:'https://www.youtube.com/watch?v=8nm863C0c60'},
+     {id:'goblet-squat',name:'Goblet Squat',group:'Legs',sets:mks('','12'),video:'https://www.youtube.com/watch?v=9KzZD_n2r64'},
+     {id:'lunges',name:'Lunges',group:'Legs',sets:mks('','12'),video:'https://www.youtube.com/watch?v=WzONHuAe6BY'},
+     {id:'leg-curl',name:'Leg Curl',group:'Legs',sets:mks('','12'),video:'https://www.youtube.com/watch?v=i6m3Vp9H40Y'},
+     {id:'hip-thrust',name:'Hip Thrust',group:'Glutes',sets:mks('','15'),video:'https://www.youtube.com/watch?v=DyE2SpeVlc0'},
+     {id:'calf-raise',name:'Calf Raise',group:'Legs',sets:mks('','20',4),video:'https://www.youtube.com/watch?v=M49slU9_0tY'},
+     {id:'plank',name:'Plank',group:'Core',sets:mks('','60s'),video:'https://www.youtube.com/watch?v=BQu26ABuVS0'},
+     {id:'russian-twist',name:'Russian Twist',group:'Core',sets:mks('','20'),video:'https://www.youtube.com/watch?v=9V9csctSKj0'},
+     {id:'ab-wheel',name:'Ab Wheel',group:'Core',sets:mks('','10'),video:'https://www.youtube.com/watch?v=ikkOq5mHaho'},
+   ],createdAt:'2024-01-01T00:00:00.000Z'},
+  {id:'ys-day3',name:'Senior C — Full Body Athletic Circuit',
+   desc:'Train like an athlete. Strength and cardio combined in a high-energy circuit that builds total fitness.',
+   ageTag:'15-16',
+   exercises:[
+     {id:'rowing-machine',name:'Rowing Machine',group:'Cardio',sets:[{weight:'',reps:'10 min warm-up',done:false}],video:'https://www.youtube.com/watch?v=XF_3ppHjQLI'},
+     {id:'push-up',name:'Push-Up',group:'Chest',sets:mks('BW','15-20',4),video:'https://www.youtube.com/watch?v=WDIpL0pjun0'},
+     {id:'pull-up',name:'Pull-Up (Assisted)',group:'Back',sets:mks('','8-12',4),video:'https://www.youtube.com/watch?v=fnHeovkmkkk'},
+     {id:'bulgarian-split',name:'Bulgarian Split Squat',group:'Legs',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=DeCnHqrN22U'},
+     {id:'dips',name:'Dips (Assisted)',group:'Triceps',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=kbmVlw-i0Vs'},
+     {id:'face-pull',name:'Face Pull',group:'Back',sets:mks('','15'),video:'https://www.youtube.com/watch?v=eTCBSFlCJ_s'},
+     {id:'battle-ropes',name:'Battle Ropes',group:'Cardio',sets:mks('','45s',4),video:'https://www.youtube.com/watch?v=CzxBf5jM3M4'},
+     {id:'bicycle-crunch',name:'Bicycle Crunch',group:'Core',sets:mks('','25'),video:'https://www.youtube.com/watch?v=PAEo-zRSanM'},
+     {id:'stair-climber',name:'Stair Climber',group:'Cardio',sets:[{weight:'',reps:'10 min',done:false}],video:'https://www.youtube.com/watch?v=SZU9Rm0sNOo'},
+   ],createdAt:'2024-01-01T00:00:00.000Z'},
+];
+
+// ── 17-18 Advanced Program (3 days, performance focus) ─────────────────
+const ADVANCED_PROGRAM = [
+  {id:'ya-day1',name:'Advanced A — Push Day',
+   desc:'Chest, shoulders and triceps with dedicated cardio. Higher intensity, heavier focus. Always use a spotter!',
+   ageTag:'17-18',
+   exercises:[
+     {id:'elliptical',name:'Elliptical Trainer',group:'Cardio',sets:[{weight:'',reps:'10 min warm-up',done:false}],video:'https://www.youtube.com/watch?v=j38LNpTLwzY'},
+     {id:'db-press',name:'Dumbbell Bench Press',group:'Chest',sets:mks('','6-10',4),video:'https://www.youtube.com/watch?v=VmB1G1K7v94'},
+     {id:'incline-db-press',name:'Incline Dumbbell Press',group:'Chest',sets:mks('','8-12',4),video:'https://www.youtube.com/watch?v=hChjZQhX1Ls'},
+     {id:'cable-fly',name:'Cable Fly',group:'Chest',sets:mks('','12-15'),video:'https://www.youtube.com/watch?v=8Um35Es-ROE'},
+     {id:'db-ohp',name:'Dumbbell Shoulder Press',group:'Shoulders',sets:mks('','8-12',4),video:'https://www.youtube.com/watch?v=vlFGTI5JzjI'},
+     {id:'lateral-raise',name:'Lateral Raise',group:'Shoulders',sets:mks('','15'),video:'https://www.youtube.com/watch?v=nnH63icHYXY'},
+     {id:'front-raise',name:'Front Raise',group:'Shoulders',sets:mks('','12'),video:'https://www.youtube.com/watch?v=CH9JzDStL3U'},
+     {id:'dips',name:'Dips (Assisted)',group:'Triceps',sets:mks('','10-12',4),video:'https://www.youtube.com/watch?v=kbmVlw-i0Vs'},
+     {id:'overhead-tricep',name:'Overhead Tricep Extension',group:'Triceps',sets:mks('','12'),video:'https://www.youtube.com/watch?v=X-iV-cG8cYs'},
+     {id:'jump-rope',name:'Jump Rope',group:'Cardio',sets:mks('','90s',3),video:'https://www.youtube.com/watch?v=s-8tbwbEZ68'},
+   ],createdAt:'2024-01-01T00:00:00.000Z'},
+  {id:'ya-day2',name:'Advanced B — Pull Day + Cardio',
+   desc:'Back and biceps are the focus. Compound pulling movements build a strong, healthy posture for life.',
+   ageTag:'17-18',
+   exercises:[
+     {id:'rowing-machine',name:'Rowing Machine',group:'Cardio',sets:[{weight:'',reps:'10 min warm-up',done:false}],video:'https://www.youtube.com/watch?v=XF_3ppHjQLI'},
+     {id:'lat-pulldown',name:'Lat Pulldown',group:'Back',sets:mks('','6-10',4),video:'https://www.youtube.com/watch?v=CAwf7n6Luuc'},
+     {id:'seated-row',name:'Seated Cable Row',group:'Back',sets:mks('','8-12',4),video:'https://www.youtube.com/watch?v=7BkgqzC6WsM'},
+     {id:'db-row',name:'Dumbbell Row',group:'Back',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=fURsHPHgssI'},
+     {id:'face-pull',name:'Face Pull',group:'Back',sets:mks('','15'),video:'https://www.youtube.com/watch?v=eTCBSFlCJ_s'},
+     {id:'pull-up',name:'Pull-Up (Assisted)',group:'Back',sets:mks('','6-10',4),video:'https://www.youtube.com/watch?v=fnHeovkmkkk'},
+     {id:'db-curl',name:'Dumbbell Curl',group:'Biceps',sets:mks('','10-12',4),video:'https://www.youtube.com/watch?v=Jfp4b5Olc7A'},
+     {id:'hammer-curl',name:'Hammer Curl',group:'Biceps',sets:mks('','12'),video:'https://www.youtube.com/watch?v=zC3nLlEvin4'},
+     {id:'preacher-curl',name:'Preacher Curl',group:'Biceps',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=gSsEC9O6NYU'},
+     {id:'treadmill',name:'Treadmill Run',group:'Cardio',sets:[{weight:'',reps:'15 min',done:false}],video:'https://www.youtube.com/watch?v=aKfJJ1TuyE4'},
+   ],createdAt:'2024-01-01T00:00:00.000Z'},
+  {id:'ya-day3',name:'Advanced C — Leg Day & Core Power',
+   desc:'The session everyone loves to hate! Strong legs and a powerful core are the foundation of all athletic performance.',
+   ageTag:'17-18',
+   exercises:[
+     {id:'stair-climber',name:'Stair Climber',group:'Cardio',sets:[{weight:'',reps:'10 min warm-up',done:false}],video:'https://www.youtube.com/watch?v=SZU9Rm0sNOo'},
+     {id:'leg-press',name:'Leg Press',group:'Legs',sets:mks('','6-12',4),video:'https://www.youtube.com/watch?v=8nm863C0c60'},
+     {id:'bulgarian-split',name:'Bulgarian Split Squat',group:'Legs',sets:mks('','10-12'),video:'https://www.youtube.com/watch?v=DeCnHqrN22U'},
+     {id:'leg-extension',name:'Leg Extension',group:'Legs',sets:mks('','12-15'),video:'https://www.youtube.com/watch?v=ljO4jkwv8wQ'},
+     {id:'leg-curl',name:'Leg Curl',group:'Legs',sets:mks('','12-15'),video:'https://www.youtube.com/watch?v=i6m3Vp9H40Y'},
+     {id:'hip-thrust',name:'Hip Thrust',group:'Glutes',sets:mks('','15',4),video:'https://www.youtube.com/watch?v=DyE2SpeVlc0'},
+     {id:'glute-kickback',name:'Cable Glute Kickback',group:'Glutes',sets:mks('','15'),video:'https://www.youtube.com/watch?v=5jJNfIlKTmg'},
+     {id:'calf-raise',name:'Calf Raise',group:'Legs',sets:mks('','20',4),video:'https://www.youtube.com/watch?v=M49slU9_0tY'},
+     {id:'plank',name:'Plank',group:'Core',sets:mks('','90s'),video:'https://www.youtube.com/watch?v=BQu26ABuVS0'},
+     {id:'ab-wheel',name:'Ab Wheel',group:'Core',sets:mks('','12-15'),video:'https://www.youtube.com/watch?v=ikkOq5mHaho'},
+     {id:'battle-ropes',name:'Battle Ropes',group:'Cardio',sets:mks('','60s',3),video:'https://www.youtube.com/watch?v=CzxBf5jM3M4'},
+   ],createdAt:'2024-01-01T00:00:00.000Z'},
+];
+
 // ══════════════════════════════════════════
 // DATABASE
 // ══════════════════════════════════════════
@@ -1535,6 +1859,34 @@ function getGreeting(){
 function checkOnboarding(){
   if(!db.getProfile()){
     document.getElementById('onboarding').classList.add('open');
+    obGoStep(0);
+  }
+}
+
+// ── Onboarding step navigation ──
+let _obStep = 0;
+function obGoStep(n){
+  _obStep = n;
+  document.querySelectorAll('.ob-step').forEach((el,i)=>el.classList.toggle('active', i===n));
+  document.querySelectorAll('.ob-dot').forEach((el,i)=>{
+    el.classList.toggle('active', i===n);
+    el.classList.toggle('done', i<n);
+  });
+}
+
+function obAgeGate(isAdult){
+  document.getElementById('ob-step-1-under').style.display = isAdult ? 'none' : 'block';
+  document.getElementById('ob-step-1-over').style.display  = isAdult ? 'block' : 'none';
+  obGoStep(1);
+}
+
+function checkTcScroll(){
+  const el = document.getElementById('tc-scroll');
+  const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 20;
+  if(atBottom){
+    document.getElementById('tc-note').style.opacity='0';
+    document.getElementById('tc-agree-wrap').style.display='flex';
+    document.getElementById('tc-continue-btn').style.display='block';
   }
 }
 
@@ -1542,9 +1894,11 @@ function completeOnboarding(){
   const name=(document.getElementById('ob-name').value||'').trim();
   const age=document.getElementById('ob-age').value;
   const consent=document.getElementById('ob-consent').checked;
+  const tcAgreed=document.getElementById('tc-agree').checked;
   if(!name){ alert('Please enter your name!'); return; }
+  if(!tcAgreed){ alert('Please go back and agree to the Terms & Conditions first. 📋'); return; }
   if(!consent){ alert('A parent or guardian needs to check the safety box first! 🛡️'); return; }
-  db.saveProfile({name,age,consent:true,createdAt:new Date().toISOString()});
+  db.saveProfile({name,age,consent:true,tcAgreed:true,createdAt:new Date().toISOString()});
   document.getElementById('onboarding').classList.remove('open');
   renderHome();
 }
@@ -1622,6 +1976,7 @@ function checkBadges(){
   const earnedIds=new Set(earned.map(b=>b.id));
   const newBadges=[];
 
+  const wcData = getWcProgress();
   for(const def of BADGE_DEFS){
     if(!earnedIds.has(def.id) && def.check(ws,streak)){
       newBadges.push({id:def.id,earnedAt:new Date().toISOString()});
@@ -1673,7 +2028,13 @@ function renderHome(){
 
   // Next suggested workout
   const tmpls=db.getTemplates();
+  const profile=db.getProfile()||{};
+  const age=profile.age||'11-12';
+  const isAdv = age==='17-18';
+  const isSen = age==='15-16';
   const begs=tmpls.filter(t=>['yb-day1','yb-day2','yb-day3'].includes(t.id));
+  const seniorTmpls = [...SENIOR_PROGRAM];
+  const advancedTmpls = [...ADVANCED_PROGRAM];
   const ints=tmpls.filter(t=>['yi-day1','yi-day2','yi-day3'].includes(t.id));
   const lastW=workouts.find(w=>w.templateId&&[...begs,...ints].map(t=>t.id).includes(w.templateId));
   let nextTmpl=null;
@@ -1693,6 +2054,7 @@ function renderHome(){
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
       </button>
       <button class="theme-btn" onclick="openThemePicker()" title="Change Theme">🎨</button>
+      <button class="theme-btn" onclick="openPc()" title="Parent Controls" style="right:52px">🔐</button>
       <div class="hero-greeting">${getGreeting()},</div>
       <div class="hero-title">${name} <span>🔥</span></div>
       <button class="start-btn" onclick="startWorkout()">
@@ -1782,14 +2144,19 @@ function workoutRowHTML(w){
 function renderTrain(){
   const workouts=db.getWorkouts();
   const tmpls=db.getTemplates();
-  const userTmpls=tmpls.filter(t=>!['yb-day1','yb-day2','yb-day3','yi-day1','yi-day2','yi-day3'].includes(t.id));
+  const userTmpls=tmpls.filter(t=>!['yb-day1','yb-day2','yb-day3','yi-day1','yi-day2','yi-day3','ys-day1','ys-day2','ys-day3','ya-day1','ya-day2','ya-day3'].includes(t.id));
+  const profile=db.getProfile()||{};
+  const age=profile.age||'11-12';
+  const isAdv=age==='17-18';
+  const isSen=age==='15-16';
+  const isInt=age==='13-14';
 
   const dayEmojis=['💪','🏋️','⚡','🔥','🏃','🦵','🎯'];
 
-  function progHtml(prog,label){
+  function progHtml(prog,label,badge){
     return `<div class="prog-card">
       <div class="prog-card-hdr">
-        <div class="prog-card-name">${label}</div>
+        <div class="prog-card-name">${label} ${badge||''}</div>
         <div class="prog-card-desc">${prog[0]?.desc?.split('!')[0]||'A complete 3-day program'}!</div>
       </div>
       <div class="prog-day-grid">
@@ -1806,19 +2173,44 @@ function renderTrain(){
     </div>`;
   }
 
+  // Build age-appropriate program sections
+  let programSections = '';
+  if(isAdv){
+    programSections = `
+      <div class="slbl">Advanced Program (Ages 17–18) — 3×/Week</div>
+      ${progHtml(ADVANCED_PROGRAM,'Push / Pull / Legs 💎','<span style="font-size:11px;background:rgba(129,140,248,.2);color:#818cf8;border-radius:20px;padding:2px 8px;font-weight:700">17–18</span>')}
+      <div class="slbl">Also Available</div>
+      ${progHtml(BEGINNER_PROGRAM,'Full Body Starter 🌱')}
+      ${progHtml(INTERMEDIATE_PROGRAM,'Upper / Lower Split ⚡')}
+      ${progHtml(SENIOR_PROGRAM,'Senior Strength + Cardio 🔥')}`;
+  } else if(isSen){
+    programSections = `
+      <div class="slbl">Senior Program (Ages 15–16) — 3×/Week</div>
+      ${progHtml(SENIOR_PROGRAM,'Strength + Cardio 🔥','<span style="font-size:11px;background:rgba(249,115,22,.2);color:#f97316;border-radius:20px;padding:2px 8px;font-weight:700">15–16</span>')}
+      <div class="slbl">Also Available</div>
+      ${progHtml(BEGINNER_PROGRAM,'Full Body Starter 🌱')}
+      ${progHtml(INTERMEDIATE_PROGRAM,'Upper / Lower Split ⚡')}`;
+  } else if(isInt){
+    programSections = `
+      <div class="slbl">Your Program — 3×/Week</div>
+      ${progHtml(INTERMEDIATE_PROGRAM,'Upper / Lower Split ⚡')}
+      <div class="slbl">Foundation Program</div>
+      ${progHtml(BEGINNER_PROGRAM,'Full Body Starter 🌱')}`;
+  } else {
+    programSections = `
+      <div class="slbl">Beginner Program — 3×/Week</div>
+      ${progHtml(BEGINNER_PROGRAM,'Full Body Starter 🌱')}
+      <div class="slbl">Intermediate Program — 3×/Week</div>
+      ${progHtml(INTERMEDIATE_PROGRAM,'Upper / Lower Split ⚡')}`;
+  }
+
   const t=document.getElementById('train-content');
   t.innerHTML=`
     <div class="ph">
       <div class="ph-title">Train 💪</div>
       <button class="btn btn-primary btn-sm" onclick="openCreateTmpl()">＋ Create</button>
     </div>
-
-    <div class="slbl">Beginner Program — 3×/Week</div>
-    ${progHtml(BEGINNER_PROGRAM,'Full Body Starter 🌱')}
-
-    <div class="slbl">Intermediate Program — 3×/Week</div>
-    ${progHtml(INTERMEDIATE_PROGRAM,'Upper / Lower Split ⚡')}
-
+    ${programSections}
     ${userTmpls.length?`
       <div class="slbl">My Templates</div>
       ${userTmpls.map(t=>`
@@ -2532,6 +2924,45 @@ function deleteWorkout(id){
 // ══════════════════════════════════════════
 // SQUAD — DATA LAYER
 // ══════════════════════════════════════════
+// ── Weight class system ──────────────────────────────────────
+const WEIGHT_CLASSES = [
+  {id:'starter', name:'Starter', emoji:'🌱', color:'#94a3b8', desc:'Learning movements with light resistance'},
+  {id:'bronze',  name:'Bronze',  emoji:'🥉', color:'#cd7f32', desc:'Building confidence and consistent form'},
+  {id:'silver',  name:'Silver',  emoji:'🥈', color:'#94a3b8', desc:'Developing strength and endurance'},
+  {id:'gold',    name:'Gold',    emoji:'🥇', color:'#f59e0b', desc:'Pushing your limits safely and steadily'},
+  {id:'elite',   name:'Elite',   emoji:'💎', color:'#818cf8', desc:'Advanced training — elite level athlete'},
+];
+const WC_KEY = 'repzilla-wc-progress';
+const PC_KEY = 'repzilla-parental-controls';
+
+function getWcProgress(){ try{ return JSON.parse(localStorage.getItem(WC_KEY)||'{}'); }catch(e){ return {}; } }
+function saveWcProgress(d){ localStorage.setItem(WC_KEY, JSON.stringify(d)); }
+function getParentalControls(){ try{ return JSON.parse(localStorage.getItem(PC_KEY)||'{}'); }catch(e){ return {}; } }
+function saveParentalControls(d){ localStorage.setItem(PC_KEY, JSON.stringify(d)); }
+
+function getExerciseClass(exId){
+  const p = getWcProgress();
+  return p[exId] ? p[exId].classIdx : 0;
+}
+
+function recordWcRep(exId, reps){
+  if(reps < 8) return false; // must complete 8+
+  const p = getWcProgress();
+  if(!p[exId]) p[exId] = {classIdx:0, count:0};
+  const pc = getParentalControls();
+  const maxClass = pc.maxClassIdx !== undefined ? pc.maxClassIdx : 4;
+  if(p[exId].classIdx >= maxClass) return false; // at parent-set limit
+  p[exId].count = (p[exId].count||0) + 1;
+  if(p[exId].count >= 3){
+    p[exId].classIdx = Math.min(p[exId].classIdx + 1, maxClass);
+    p[exId].count = 0;
+    saveWcProgress(p);
+    return true; // advanced!
+  }
+  saveWcProgress(p);
+  return false;
+}
+
 const SQUAD_KEYS = {
   userId:'gh_userid', friends:'gh_friends', challenges:'gh_challenges'
 };
@@ -2940,45 +3371,4 @@ function renderSquad(){
           <div class="challenge-nums"><span class="done">${prog} done</span><span class="goal">Goal: ${ch.goal}</span></div>
           <div style="display:flex;gap:8px;margin-top:10px">
             <button class="challenge-share-btn" style="flex:2" onclick="shareChallengeprogress('${ch.id}')">📤 Share Progress</button>
-            <button onclick="deleteChallenge('${ch.id}')" style="flex:1;padding:10px;border-radius:12px;background:none;border:1px solid var(--surface3);color:var(--text3);font-size:13px;font-weight:700;cursor:pointer">🗑</button>
-          </div>
-        </div>
-      </div>`;
-    }).join(''):`<div class="empty" style="padding:24px 24px 16px"><div class="empty-icon">⚡</div><div class="empty-text">No challenges yet!<br>Create one and invite your friends.</div></div>`}
-
-    <div class="slbl" style="margin-top:8px">Badges 🏅</div>
-    <div style="margin:0 16px 12px;background:var(--surface);border-radius:14px;padding:14px 16px">
-      <div style="font-size:14px;color:var(--text2);margin-bottom:10px;font-weight:600">${earnedBadges.length} of ${BADGE_DEFS.length} badges earned</div>
-      <div style="background:var(--surface3);border-radius:6px;height:10px;overflow:hidden">
-        <div style="height:100%;background:var(--grad);border-radius:6px;width:${Math.round((earnedBadges.length/BADGE_DEFS.length)*100)}%;transition:width .5s"></div>
-      </div>
-    </div>
-    <div class="badge-grid">
-      ${BADGE_DEFS.map(def=>{
-        const earned=earnedIds.has(def.id);
-        return `<div class="badge-item${earned?'':' locked'}">
-          <div class="badge-emoji">${def.emoji}</div>
-          <div class="badge-name">${def.name}</div>
-          <div class="badge-desc">${def.desc}</div>
-        </div>`;
-      }).join('')}
-    </div>
-    <div class="pad"></div>`;
-}
-
-// ══════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════
-function init(){
-  spawnParticles();
-  loadSavedTheme();
-  checkOnboarding();
-  checkResumeWorkout();
-  renderHome();
-  // splash dismissed by tapping the LET'S GO button
-}
-
-init();
-</script>
-</body>
-</html>
+            <button onclick="deleteChallenge('${ch.id}')" style="flex:1;padding:10px;border-radius:12px;background:none;border:1px solid var(--surface3);color:var(--text3);font-size:13px;font-weight:700;cur
