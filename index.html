@@ -2028,8 +2028,7 @@ function renderHome(){
 
   // Next suggested workout
   const tmpls=db.getTemplates();
-  const profile=db.getProfile()||{};
-  const age=profile.age||'11-12';
+  const age=(profile||{}).age||'11-12';
   const isAdv = age==='17-18';
   const isSen = age==='15-16';
   const begs=tmpls.filter(t=>['yb-day1','yb-day2','yb-day3'].includes(t.id));
@@ -2145,8 +2144,8 @@ function renderTrain(){
   const workouts=db.getWorkouts();
   const tmpls=db.getTemplates();
   const userTmpls=tmpls.filter(t=>!['yb-day1','yb-day2','yb-day3','yi-day1','yi-day2','yi-day3','ys-day1','ys-day2','ys-day3','ya-day1','ya-day2','ya-day3'].includes(t.id));
-  const profile=db.getProfile()||{};
-  const age=profile.age||'11-12';
+  const profile2=db.getProfile()||{};
+  const age=profile2.age||'11-12';
   const isAdv=age==='17-18';
   const isSen=age==='15-16';
   const isInt=age==='13-14';
